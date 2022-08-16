@@ -8,11 +8,23 @@ const reft = {
   countryInfo: document.querySelector('.country-info'),
 };
 
-reft.searcBbox, addEventListener('input', pole);
+const fetchUrl = 'https://restcountries.com/v3.1/name/';
+const paranetrs = 'fields=name,capital,population,flags,languages';
 
-console.log(reft.searcBbox);
+function countrySearch(city) {
+  const response = fetch(`${fetchUrl}${city}?${paranetrs}`)
+    .then(res => res.json())
+    .then(data => array(data));
+  return response;
+}
+
+function array(obj) {
+  console.log(obj);
+}
+
+reft.searcBbox.addEventListener('input', pole);
 
 function pole() {
-  reft.countryList.textContent = reft.searcBbox.value;
-  console.log(reft.searcBbox.value);
+  const city = reft.searcBbox.value;
+  countrySearch(city);
 }
