@@ -1,2 +1,0 @@
-const e={searcBbox:document.querySelector("#search-box"),countryList:document.querySelector(".country-list"),countryInfo:document.querySelector(".country-info")};function t(e){return fetch(`https://restcountries.com/v3.1/name/${e}?fields=name,capital,population,flags,languages`).then((e=>e.json())).then((e=>{return t=e,void console.log(t);var t}))}e.searcBbox.addEventListener("input",(function(){t(e.searcBbox.value)}));
-//# sourceMappingURL=index.671af171.js.map
