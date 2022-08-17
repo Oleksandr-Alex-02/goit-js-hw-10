@@ -1,4 +1,5 @@
 import './css/styles.css';
+import countrySearch from './fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -8,23 +9,35 @@ const reft = {
   countryInfo: document.querySelector('.country-info'),
 };
 
-const fetchUrl = 'https://restcountries.com/v3.1/name/';
-const paranetrs = 'fields=name,capital,population,flags,languages';
-
-function countrySearch(city) {
-  const response = fetch(`${fetchUrl}${city}?${paranetrs}`)
-    .then(res => res.json())
-    .then(data => array(data));
-  return response;
-}
-
-function array(obj) {
-  console.log(obj);
-}
-
 reft.searcBbox.addEventListener('input', pole);
 
 function pole() {
   const city = reft.searcBbox.value;
-  countrySearch(city);
+  if (city.length === 3) {
+    countrySearch(city)
+      .then(data => countries(data))
+      .catch(error => {
+        console.error('error');
+      });
+  }
+  if (city.length === 0) {
+    reft.countryList.textContent = '';
+    reft.countryInfo.textContent = '';
+  }
+}
+
+function countries(obj) {
+  // const name = obj[0].name.official;
+  // const capital = obj[0].capital;
+  // const flags = obj[0].flags.svg;
+  // const languages = obj[0].languages;
+  // const population = obj[0].population;
+
+  const markap = obj.map(({ name, flags: { svg } }) => {
+    return `
+    <img src="${svg}" alt="${name}" height="25" width="40"></img><p>${name}</p></li>
+    `;
+  });
+
+  reft.countryList.insertAdjacentHTML('beforeend', markap);
 }
