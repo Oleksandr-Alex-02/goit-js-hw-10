@@ -1,4 +1,4 @@
-const fetchUrl = 'https://restcountries.com/v2/name/';
+const fetchUrl = 'https://restcountries.com/v3.1/name/';
 const paranetrs = 'fields=name,capital,population,flags,languages';
 
 export default function countrySearch(city) {
