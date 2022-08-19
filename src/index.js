@@ -82,7 +82,7 @@ function countryInfo(obj) {
   <ul>
     <li class="country_list"><h3>Capital:</h3> <span>Swamp</span></li>
     <li class="country_list"><h3>Orcs:</h3> <span>${country.population}</span></li>
-    <li class="country_list"><h3>Languages:</h3> <span>${value}</span></li>
+    <li class="country_list"><h3>Languages:</h3> <span>terror</span></li>
   </ul>
         `;
       }
